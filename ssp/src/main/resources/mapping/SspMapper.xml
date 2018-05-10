@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adplatform.ssp.dao.SspMapper" >
+  <resultMap id="BaseResultMap" type="com.adplatform.ssp.pojo.Ssp" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+    <result column="adx_id" property="adxId" jdbcType="VARCHAR" />
+    <result column="adx_token" property="adxToken" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, token, adx_id, adx_token
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ssp
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ssp
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.adplatform.ssp.pojo.Ssp" >
+    insert into ssp (id, name, token, 
+      adx_id, adx_token)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, 
+      #{adxId,jdbcType=VARCHAR}, #{adxToken,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adplatform.ssp.pojo.Ssp" >
+    insert into ssp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="adxId != null" >
+        adx_id,
+      </if>
+      <if test="adxToken != null" >
+        adx_token,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="adxId != null" >
+        #{adxId,jdbcType=VARCHAR},
+      </if>
+      <if test="adxToken != null" >
+        #{adxToken,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adplatform.ssp.pojo.Ssp" >
+    update ssp
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="adxId != null" >
+        adx_id = #{adxId,jdbcType=VARCHAR},
+      </if>
+      <if test="adxToken != null" >
+        adx_token = #{adxToken,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adplatform.ssp.pojo.Ssp" >
+    update ssp
+    set name = #{name,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      adx_id = #{adxId,jdbcType=VARCHAR},
+      adx_token = #{adxToken,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

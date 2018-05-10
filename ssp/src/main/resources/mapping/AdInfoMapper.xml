@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adplatform.ssp.dao.AdInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.adplatform.ssp.pojo.AdInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="width" property="width" jdbcType="VARCHAR" />
+    <result column="height" property="height" jdbcType="VARCHAR" />
+    <result column="data" property="data" jdbcType="VARCHAR" />
+    <result column="ssp_id" property="sspId" jdbcType="BIGINT" />
+    <result column="adx_ad_id" property="adxAdId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, type, width, height, data, ssp_id, adx_ad_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ad_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ad_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.adplatform.ssp.pojo.AdInfo" >
+    insert into ad_info (id, type, width, 
+      height, data, ssp_id, 
+      adx_ad_id)
+    values (#{id,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, #{width,jdbcType=VARCHAR}, 
+      #{height,jdbcType=VARCHAR}, #{data,jdbcType=VARCHAR}, #{sspId,jdbcType=BIGINT}, 
+      #{adxAdId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adplatform.ssp.pojo.AdInfo" >
+    insert into ad_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="width != null" >
+        width,
+      </if>
+      <if test="height != null" >
+        height,
+      </if>
+      <if test="data != null" >
+        data,
+      </if>
+      <if test="sspId != null" >
+        ssp_id,
+      </if>
+      <if test="adxAdId != null" >
+        adx_ad_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="width != null" >
+        #{width,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null" >
+        #{height,jdbcType=VARCHAR},
+      </if>
+      <if test="data != null" >
+        #{data,jdbcType=VARCHAR},
+      </if>
+      <if test="sspId != null" >
+        #{sspId,jdbcType=BIGINT},
+      </if>
+      <if test="adxAdId != null" >
+        #{adxAdId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adplatform.ssp.pojo.AdInfo" >
+    update ad_info
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="width != null" >
+        width = #{width,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null" >
+        height = #{height,jdbcType=VARCHAR},
+      </if>
+      <if test="data != null" >
+        data = #{data,jdbcType=VARCHAR},
+      </if>
+      <if test="sspId != null" >
+        ssp_id = #{sspId,jdbcType=BIGINT},
+      </if>
+      <if test="adxAdId != null" >
+        adx_ad_id = #{adxAdId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adplatform.ssp.pojo.AdInfo" >
+    update ad_info
+    set type = #{type,jdbcType=INTEGER},
+      width = #{width,jdbcType=VARCHAR},
+      height = #{height,jdbcType=VARCHAR},
+      data = #{data,jdbcType=VARCHAR},
+      ssp_id = #{sspId,jdbcType=BIGINT},
+      adx_ad_id = #{adxAdId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

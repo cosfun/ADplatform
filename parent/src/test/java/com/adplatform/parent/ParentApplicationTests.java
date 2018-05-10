@@ -1,4 +1,4 @@
-package com.adplatform.ssp;
+package com.adplatform.parent;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,10 +7,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SspApplicationTests {
+public class ParentApplicationTests {
+
 	@Test
 	public void contextLoads() {
-
 	}
 
 }
