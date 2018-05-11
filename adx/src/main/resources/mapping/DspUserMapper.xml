@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adplatform.adx.dao.DspUserMapper" >
+  <resultMap id="BaseResultMap" type="com.adplatform.adx.pojo.DspUser" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="dsp_id" property="dspId" jdbcType="BIGINT" />
+    <result column="dsp_token" property="dspToken" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, dsp_id, dsp_token, name, url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from dsp_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dsp_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.adplatform.adx.pojo.DspUser" >
+    insert into dsp_user (id, dsp_id, dsp_token, 
+      name, url)
+    values (#{id,jdbcType=BIGINT}, #{dspId,jdbcType=BIGINT}, #{dspToken,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adplatform.adx.pojo.DspUser" >
+    insert into dsp_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="dspId != null" >
+        dsp_id,
+      </if>
+      <if test="dspToken != null" >
+        dsp_token,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="dspId != null" >
+        #{dspId,jdbcType=BIGINT},
+      </if>
+      <if test="dspToken != null" >
+        #{dspToken,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adplatform.adx.pojo.DspUser" >
+    update dsp_user
+    <set >
+      <if test="dspId != null" >
+        dsp_id = #{dspId,jdbcType=BIGINT},
+      </if>
+      <if test="dspToken != null" >
+        dsp_token = #{dspToken,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adplatform.adx.pojo.DspUser" >
+    update dsp_user
+    set dsp_id = #{dspId,jdbcType=BIGINT},
+      dsp_token = #{dspToken,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
