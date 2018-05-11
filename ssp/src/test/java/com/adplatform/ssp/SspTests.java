@@ -9,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
 public class SspTests {
 
 	@Autowired
@@ -23,8 +22,8 @@ public class SspTests {
 
 	@Test
 	public void findSspById(){
-		Ssp ssp=sspMapper.selectByPrimaryKey(1l);
-		System.out.println(ssp.toString());
+		/*Ssp ssp=sspMapper.selectByPrimaryKey(1l);
+		System.out.println(ssp.toString());*/
 	}
 
 	@Test

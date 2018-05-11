@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.Map;
 
-@RequestMapping("/ad")
+@RequestMapping("/ssp")
 @RestController
 public class AdController {
 
